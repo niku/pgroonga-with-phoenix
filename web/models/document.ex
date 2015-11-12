@@ -21,4 +21,9 @@ defmodule DocumentSearch.Document do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
+  def full_text_search(base_query, searching_query) do
+    from d in base_query,
+    where: fragment("content @@ ?", ^searching_query)
+  end
 end
