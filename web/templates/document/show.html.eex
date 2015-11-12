@@ -1,0 +1,18 @@
+<h2>Show document</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @document.title %>
+  </li>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @document.content %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: document_path(@conn, :edit, @document) %>
+<%= link "Back", to: document_path(@conn, :index) %>
