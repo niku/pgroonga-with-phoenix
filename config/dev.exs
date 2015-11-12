@@ -35,7 +35,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :document_search, DocumentSearch.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: System.get_env("USER"),
   password: "postgres",
   database: "document_search_dev",
   hostname: "localhost",
