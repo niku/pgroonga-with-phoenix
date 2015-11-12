@@ -1,5 +1,15 @@
 <h2>Listing documents</h2>
 
+<p><%= length(@documents) %> records</p>
+
+<%= form_for @conn, document_path(@conn, :index), [as: :document, method: :get], fn f -> %>
+  <div class="form-group">
+    <%= label f, :query, "query", class: "control-label" %>
+    <%= text_input f, :query, class: "form-control" %>
+  </div>
+  <%= submit "Submit" %>
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
