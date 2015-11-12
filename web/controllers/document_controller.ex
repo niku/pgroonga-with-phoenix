@@ -5,6 +5,11 @@ defmodule DocumentSearch.DocumentController do
 
   plug :scrub_params, "document" when action in [:create, :update]
 
+  def index(conn, %{"document" => %{"query" => query}}) do
+    documents = Repo.all(Document.full_text_search(Document, query))
+    render(conn, "index.html", documents: documents)
+  end
+
   def index(conn, _params) do
     documents = Repo.all(Document)
     render(conn, "index.html", documents: documents)
